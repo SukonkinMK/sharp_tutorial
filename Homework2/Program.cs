@@ -11,7 +11,8 @@ namespace Homework2
         static void Main(string[] args)
         {
             //Task1();
-            Task2();
+            //Task2();
+            Task3();
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace Homework2
         }
 
         /// <summary>
-        /// Задача 1. Запросить порядковый номер текущего месяца и вывести его название
+        /// Задача 2. Запросить порядковый номер текущего месяца и вывести его название
         /// </summary>
         public static void Task2()
         {
@@ -79,5 +80,24 @@ namespace Homework2
             }
             Console.ReadKey();
         }
-    }
+
+        /// <summary>
+        /// Задача 3. Определить, является ли введённое число чётным
+        /// </summary>
+        public static void Task3()
+        {
+            Console.Write("Введите целое число ");
+            int number = int.Parse(Console.ReadLine());
+            if (number % 2 == 0)
+            {
+                Console.WriteLine($"Введенное число {number} является четным");
+            }
+            else
+            {
+                Console.WriteLine($"Введенное число {number} является нечетным");
+            }
+            Console.ReadKey();
+        }
+
+        
 }
