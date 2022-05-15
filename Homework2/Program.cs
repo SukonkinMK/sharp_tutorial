@@ -13,7 +13,8 @@ namespace Homework2
             //Task1();
             //Task2();
             //Task3();
-            Task4();
+            //Task4();
+            Task5();
         }
 
         /// <summary>
@@ -129,6 +130,25 @@ namespace Homework2
             Console.WriteLine("========================================");
             Console.WriteLine($"ИТОГ \t\t \t\t {product1_Price+product2_Price}");
             Console.WriteLine($" Сумма НДС 18% \t \t\t {(product1_Price + product2_Price)*0.18:F1}");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Если введен месяц из зимнего периода, а средняя температура > 0, вывести сообщение «Дождливая зима»
+        /// </summary>
+        public static void Task5()
+        {
+            Console.Write("Введите минимальную температуру за сутки ");
+            double t_min = double.Parse(Console.ReadLine());
+            Console.Write("Введите максимальную температуру за сутки ");
+            double t_max = double.Parse(Console.ReadLine());
+            double t_avg = (t_max + t_min) / 2;
+            Console.Write("Введите порядковый номер текущего месяца ");
+            int number = int.Parse(Console.ReadLine());
+            if (t_avg > 0 && (number == 12 || number == 1 || number == 2))
+            {
+                Console.WriteLine("Дождливая зима");
+            }
             Console.ReadKey();
         }
     }
