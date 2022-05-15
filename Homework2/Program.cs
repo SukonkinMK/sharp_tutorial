@@ -10,12 +10,33 @@ namespace Homework2
     {
         static void Main(string[] args)
         {
-            //Task1();
-            //Task2();
-            //Task3();
-            //Task4();
-            //Task5();
-            Task6();
+            Console.Write("Введите номер задачи (от 1 до 6): ");
+            int number = int.Parse(Console.ReadLine());
+            switch(number)
+            {
+                case 1:
+                    Task1();
+                    break;
+                case 2:
+                    Task2();
+                    break;
+                case 3:
+                    Task3();
+                    break;
+                case 4:
+                    Task4();
+                    break;
+                case 5:
+                    Task5();
+                    break;
+                case 6:
+                    Task6();
+                    break;
+                default:
+                    Console.WriteLine("Некорректный номер задачи ...");
+                    Console.ReadKey();
+                    break;
+            }
         }
 
         /// <summary>
