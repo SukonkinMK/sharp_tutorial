@@ -14,7 +14,8 @@ namespace Homework2
             //Task2();
             //Task3();
             //Task4();
-            Task5();
+            //Task5();
+            Task6();
         }
 
         /// <summary>
@@ -149,6 +150,32 @@ namespace Homework2
             {
                 Console.WriteLine("Дождливая зима");
             }
+            Console.ReadKey();
+        }
+
+        [Flags]
+        public enum DayOfWeek
+        {
+            Понедельник = 0b_0000001,
+            Вторник = 0b_0000010,
+            Среда = 0b_0000100,
+            Четверг = 0b_0001000,
+            Пятница = 0b_0010000,
+            Суббота = 0b_0100000,
+            Воскресенье = 0b_1000000,
+        }
+
+        /// <summary>
+        /// Задача 6. Вывод расписания офисов с помощью битовых масок
+        /// </summary>
+        public static void Task6()
+        {
+            //расписание работы офиса #1
+            DayOfWeek office1 = (DayOfWeek)0b_0001110;
+            //расписание работы офиса #2
+            DayOfWeek office2 = (DayOfWeek)0b_0111111;
+            Console.WriteLine($"Офис 1 работает в: {office1}");
+            Console.WriteLine($"Офис 2 работает в: {office2}");
             Console.ReadKey();
         }
     }
