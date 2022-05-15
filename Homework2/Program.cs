@@ -12,7 +12,8 @@ namespace Homework2
         {
             //Task1();
             //Task2();
-            Task3();
+            //Task3();
+            Task4();
         }
 
         /// <summary>
@@ -99,5 +100,36 @@ namespace Homework2
             Console.ReadKey();
         }
 
-        
+        /// <summary>
+        /// Задача 4. Печать чека
+        /// </summary>
+        public static void Task4()
+        {
+            int checkNumber = 5019;
+            string shopNumber = "03050040";
+            long checkCode = 8212662660;
+            string shopAddress = "410000, Московская обл, Долгопрудный г,\nПервомайская ул, дом 1Б";
+            string product1_Name = "Пакет 65х40см";
+            double product1_Price = 4.90;
+            string product2_Name = "Хлеб ржаной";
+            double product2_Price = 48.90;
+            string seller_Name = "Суконкин М.К.";
+            DateTime date  = new DateTime(2018,6,3,18,3,0);
+            Console.WriteLine("--------------КАССОВЫЙ ЧЕК--------------");
+            Console.WriteLine("Приход");
+            Console.WriteLine($"Номер чека: \t\t {checkNumber}");
+            Console.WriteLine($"Код магазина: \t\t {shopNumber}");
+            Console.WriteLine($"Код чека: \t\t {checkCode}");
+            Console.WriteLine($"Фактический аддрес:\n{shopAddress}");
+            Console.WriteLine($"Кассир: {seller_Name} \t {date.ToString("dd.MM.yyyy")} {date.ToString("HH:mm")}");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("№ \t Наименование \t\t Цена");
+            Console.WriteLine($"1 \t {product1_Name} \t\t {product1_Price}");
+            Console.WriteLine($"2 \t {product2_Name} \t\t {product2_Price}");
+            Console.WriteLine("========================================");
+            Console.WriteLine($"ИТОГ \t\t \t\t {product1_Price+product2_Price}");
+            Console.WriteLine($" Сумма НДС 18% \t \t\t {(product1_Price + product2_Price)*0.18:F1}");
+            Console.ReadKey();
+        }
+    }
 }
