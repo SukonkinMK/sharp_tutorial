@@ -37,7 +37,7 @@ namespace Homework3
                         Task3();
                         break;
                     case 4:
-                        //Task4();
+                        Task4();
                         break;
                     default:
                         Console.WriteLine("Некорректный номер задачи ...");
@@ -114,6 +114,34 @@ namespace Homework3
                 Console.Write($"{s[i]}");
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Задача 4. Вывести поле для игры Морской бой
+        /// </summary>
+        public static void Task4()
+        {
+            Console.WriteLine("Поле для игры в морской бой");
+            char[,] battlefield = new char[10, 10] {
+                { 'O', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'X', 'O'},
+                { 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'},
+                { 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'},
+                { 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'O'},
+                { 'O', 'X', 'O', 'X', 'O', 'O', 'O', 'O', 'X', 'O'},
+                { 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'X', 'O'},
+                { 'O', 'O', 'O', 'O', 'X', 'O', 'O', 'O', 'O', 'O'},
+                { 'X', 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O'},
+                { 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'X', 'O'},
+                { 'O', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'O'},
+            };
+            for(int i = 0; i < battlefield.GetLength(0); i++)
+            {
+                for(int j = 0; j < battlefield.GetLength(1); j++)
+                {
+                    Console.Write($"{battlefield[i, j]} ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
