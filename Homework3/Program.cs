@@ -12,6 +12,13 @@ namespace Homework3
         {
             while (true)
             {
+                Console.WriteLine("===================================");
+                Console.WriteLine("1 - Задача 1");
+                Console.WriteLine("2 - Задача 2");
+                Console.WriteLine("3 - Задача 3");
+                Console.WriteLine("4 - Задача 4");
+                Console.WriteLine("0 - Завершение работы приложения");
+                Console.WriteLine("===================================");
                 Console.Write("Введите номер задачи (от 1 до 4): ");
                 int number = int.Parse(Console.ReadLine());
                 switch (number)
@@ -24,7 +31,7 @@ namespace Homework3
                         Task1();
                         break;
                     case 2:
-                        //Task2();
+                        Task2();
                         break;
                     case 3:
                         //Task3();
@@ -75,5 +82,23 @@ namespace Homework3
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Задача 2. Телефонный справочник
+        /// </summary>
+        public static void Task2()
+        {
+            string[,] list = new string[5, 2] { 
+                { "Иван", "8(925)1234567" },
+                { "Дима", "example@email.com" }, 
+                { "Петя", "8(985)7654321" }, 
+                { "Вася", "vacya@mail.ru" }, 
+                { "Влад", "8(495)1234567" } 
+            };
+            Console.WriteLine("Текущий телефонный справочник:");
+            for(int i = 0; i < list.GetLength(0); i++)
+            {
+                Console.WriteLine($"{i + 1}. {list[i, 0]} - {list[i, 1]}");
+            }
+        }
     }
 }
