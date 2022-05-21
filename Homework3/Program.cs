@@ -34,7 +34,7 @@ namespace Homework3
                         Task2();
                         break;
                     case 3:
-                        //Task3();
+                        Task3();
                         break;
                     case 4:
                         //Task4();
@@ -99,6 +99,21 @@ namespace Homework3
             {
                 Console.WriteLine($"{i + 1}. {list[i, 0]} - {list[i, 1]}");
             }
+        }
+
+        /// <summary>
+        /// Задача 3. Перевернуть строку
+        /// </summary>
+        public static void Task3()
+        {
+            Console.Write("Введите слово ");
+            string s = Console.ReadLine();
+            Console.Write("В обратном порядке ваше слово выглядит так: ");
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                Console.Write($"{s[i]}");
+            }
+            Console.WriteLine();
         }
     }
 }
