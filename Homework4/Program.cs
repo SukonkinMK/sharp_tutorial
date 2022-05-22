@@ -31,7 +31,7 @@ namespace Homework4
                         Task1();
                         break;
                     case 2:
-                        //Task2();
+                        Task2();
                         break;
                     case 3:
                         //Task3();
@@ -59,9 +59,50 @@ namespace Homework4
             Console.WriteLine($"ФИО: {GetFullName(name,surname,patronymic)}");
         }
 
+        /// <summary>
+        /// Возвращает строку с ФИО
+        /// </summary>
+        /// <param name="firstName">Имя</param>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <returns></returns>
         static string GetFullName(string firstName, string lastName, string patronymic)
         {
             return firstName + " " + lastName + " " + patronymic;
+        }
+
+        /// <summary>
+        /// Задача 2. Считать с консоли строку чисел через пробел и вывести их сумму
+        /// </summary>
+        static void Task2()
+        {
+            Console.Write("Введите строку целых чисел для суммирования через пробел: ");
+            string numbers = Console.ReadLine();
+            int[] parsedNumbers = ParseToIntArray(numbers);
+            int sum = 0;
+            foreach(int number in parsedNumbers)
+            {
+                sum += number;
+            }
+            Console.WriteLine($"Сумма введенных чисел: {sum}");
+
+        }
+        
+        /// <summary>
+        /// Перевод строки в массив целых чисел
+        /// </summary>
+        /// <param name="str">Строка с целыми числами, разделенными пробелом</param>
+        /// <returns>Массив целых чисел введенных в строке</returns>
+        static int[] ParseToIntArray(string str)
+        {
+            int[] numbers;
+            string[] parseStrings = str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            numbers = new int[parseStrings.Length];
+            for (int i = 0; i < parseStrings.Length; i++)
+            {
+                numbers[i] = int.Parse(parseStrings[i]);
+            }
+            return numbers;
         }
     }
 }
