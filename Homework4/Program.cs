@@ -34,10 +34,10 @@ namespace Homework4
                         Task2();
                         break;
                     case 3:
-                        //Task3();
+                        Task3();
                         break;
                     case 4:
-                        //Task4();
+                        Task4();
                         break;
                     default:
                         Console.WriteLine("Некорректный номер задачи ...");
@@ -56,7 +56,7 @@ namespace Homework4
             string patronymic = "Иванович";
             Console.WriteLine(GetFullName(name, surname, patronymic));
             Console.WriteLine(GetFullName("Александр", "Сергеевич", "Пушкин"));
-            Console.WriteLine($"ФИО: {GetFullName(name,surname,patronymic)}");
+            Console.WriteLine($"ФИО: {GetFullName(name, surname, patronymic)}");
         }
 
         /// <summary>
@@ -80,14 +80,14 @@ namespace Homework4
             string numbers = Console.ReadLine();
             int[] parsedNumbers = ParseToIntArray(numbers);
             int sum = 0;
-            foreach(int number in parsedNumbers)
+            foreach (int number in parsedNumbers)
             {
                 sum += number;
             }
             Console.WriteLine($"Сумма введенных чисел: {sum}");
 
         }
-        
+
         /// <summary>
         /// Перевод строки в массив целых чисел
         /// </summary>
@@ -103,6 +103,102 @@ namespace Homework4
                 numbers[i] = int.Parse(parseStrings[i]);
             }
             return numbers;
+        }
+
+        /// <summary>
+        /// Задача 3. Определение времени года.
+        /// </summary>
+        static void Task3()
+        {
+            Console.Write("Введите порядковый номер месяца: ");
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine(SeasonToString(MonthNumberToSeason(number)));
+        }
+
+        public enum Season
+        {
+            Winter,
+            Spring,
+            Summer,
+            Autumn,
+            Undefined
+        }
+
+        /// <summary>
+        /// Возвращает время года в зависимости от номера месяца
+        /// </summary>
+        /// <param name="n">Номер месяца</param>
+        /// <returns>Возвращает время года типа enum</returns>
+        static Season MonthNumberToSeason(int n)
+        {
+            if (n < 1 || n > 12)
+            { 
+                return Season.Undefined; 
+            }
+            else if (n == 12 || n == 1 || n == 2)
+            {
+                return Season.Winter;
+            }
+            else if (n > 2 && n < 6)
+            {
+                return Season.Spring;
+            }
+            else if (n > 5 && n < 9)
+            {
+                return Season.Summer;
+            }
+            else
+            {
+                return Season.Autumn;
+            }
+        }
+
+        /// <summary>
+        /// Принимает сезон года и возвращает сообщение
+        /// </summary>
+        /// <param name="season">Сезон года</param>
+        /// <returns>Строка с сообщением</returns>
+        static string SeasonToString(Season season)
+        {
+            switch (season)
+            {
+                case Season.Winter:
+                    return "зима";
+                case Season.Spring:
+                    return "весна";
+                case Season.Autumn:
+                    return "осень";
+                case Season.Summer:
+                    return "лето";
+                default:
+                    return "Ошибка: введите число от 1 до 12";
+            }
+        }
+
+        /// <summary>
+        /// Задача 4. Последовательность Фибоначчи
+        /// </summary>
+        static void Task4()
+        {
+            Console.Write($"Введите порядковый номер числа в последовательности: ");
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Число под номером {number} в последовательности Фибоначчи равно {Fibonachi(number)}");
+        }
+
+        static int Fibonachi(int n)
+        {
+            if (n == 0)
+            {
+                return 0;
+            }
+            else if (n == 1 || n == 2)
+            {
+                return 1;
+            }
+            else
+            {
+                return Fibonachi(n - 1) + Fibonachi(n - 2);
+            }
         }
     }
 }
