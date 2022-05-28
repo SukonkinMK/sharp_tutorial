@@ -35,7 +35,7 @@ namespace Homework5
                         Task2();
                         break;
                     case 3:
-                        //Task3();
+                        Task3();
                         break;
                     case 4:
                         //Task4();
@@ -56,8 +56,7 @@ namespace Homework5
             Console.Write("Ввседите текст для сохранения в файл: ");
             string data = Console.ReadLine();
             File.WriteAllText(filename, data);
-            DirectoryInfo directoryInfo = new DirectoryInfo(filename);
-            Console.WriteLine($"Данные записаны в файл {directoryInfo.FullName}");
+            PrintPathToFile(filename);
         }
 
         /// <summary>
@@ -69,6 +68,34 @@ namespace Homework5
             DateTime time = DateTime.Now;
             string s = time.ToString("HH:mm:ss") + '\n';
             File.AppendAllText(filename,s);
+            PrintPathToFile(filename);
+        }
+
+        /// <summary>
+        /// Задача 3. Ввести с набор чисел (0...255) и записать их в бинарный файл
+        /// </summary>
+        public static void Task3()
+        {
+            string filename = "bytes.bin";
+            byte[] data;
+            Console.Write("Введите набор чисел (от 0 до 255): ");
+            string inputData = Console.ReadLine();
+            string[] parseData = inputData.Split(new char[] { ' ', ',', '.' },StringSplitOptions.RemoveEmptyEntries);
+            data = new byte[parseData.Length];
+            for (int i = 0; i < parseData.Length; i++)
+            {
+                data[i] = Byte.Parse(parseData[i]);
+            }
+            File.WriteAllBytes(filename, data);
+            PrintPathToFile(filename);
+        }
+
+        /// <summary>
+        /// Выводит полный путь к файлу
+        /// </summary>
+        /// <param name="filename">Имя файла</param>
+        public static void PrintPathToFile(string filename)
+        {
             DirectoryInfo directoryInfo = new DirectoryInfo(filename);
             Console.WriteLine($"Данные записаны в файл {directoryInfo.FullName}");
         }
