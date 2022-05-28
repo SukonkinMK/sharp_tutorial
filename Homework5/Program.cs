@@ -38,7 +38,7 @@ namespace Homework5
                         Task3();
                         break;
                     case 4:
-                        //Task4();
+                        Task4();
                         break;
                     default:
                         Console.WriteLine("Некорректный номер задачи ...");
@@ -98,6 +98,77 @@ namespace Homework5
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(filename);
             Console.WriteLine($"Данные записаны в файл {directoryInfo.FullName}");
+        }
+
+        /// <summary>
+        /// Задача 4. Сохранить дерево каталогов и файлов по заданному пути в текстовый файл — с рекурсией и без
+        /// </summary>
+        public static void Task4()
+        {
+            string filename = "catalog.txt";
+            Console.Write("Введите полный путь к директории: ");
+            string workDir = Console.ReadLine();
+            //Console.Write("Решить задачу с рекурсией? (Y / N): ");
+            //string mode = Console.ReadLine();
+            DirectoryInfo directoryInfo = new DirectoryInfo(workDir);
+            //PrintDir(directoryInfo, "", true);
+            PrintDirToFileRecursive(filename, directoryInfo, "", true);
+        }
+
+        /// <summary>
+        /// Задача из урока с печатью файлов и директорий
+        /// </summary>
+        /// <param name="dir">Целевая директория</param>
+        /// <param name="indent">отступ</param>
+        /// <param name="lastDir">последняя ли директория</param>
+        public static void PrintDir(DirectoryInfo dir, string indent, bool lastDir)
+        {
+            Console.WriteLine($"{indent}{(lastDir ? "\u2514\u2500" : "\u251C\u2500")}{dir.Name}");
+            indent += lastDir ? " " : "\u2502 ";
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            FileInfo[] files = dir.GetFiles();
+            for (int i = 0; i < dirs.Length; i++)
+            {
+                PrintDir(dirs[i], indent, (i == dirs.Length - 1) && files.Length == 0);
+            }
+            PrintFilesInDirectory(files, indent);
+        }
+
+        /// <summary>
+        /// Печать фалов текущей директории
+        /// </summary>
+        /// <param name="files">массив фалов</param>
+        /// <param name="indent">отступ</param>
+        public static void PrintFilesInDirectory(FileInfo[] files, string indent)
+        {
+            for (int i = 0; i < files.Length; i++)
+            {
+                Console.WriteLine($"{indent}{ (i == files.Length - 1 ? "\u2514\u2500" : "\u251C\u2500") }{files[i].Name}");
+            }
+        }
+
+        /// <summary>
+        /// Запись дерева каталога файлов и папок в файл
+        /// </summary>
+        /// <param name="filename">файл для записи</param>
+        /// <param name="dir">директория</param>
+        /// <param name="indent">отступ</param>
+        /// <param name="lastDir">последняя директория</param>
+        public static void PrintDirToFileRecursive(string filename, DirectoryInfo dir, string indent, bool lastDir)
+        {
+            File.AppendAllText(filename, $"{indent}{(lastDir ? "\u2514\u2500" : "\u251C\u2500")}{dir.Name}\n");
+            indent += lastDir ? " " : "\u2502 ";
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            FileInfo[] files = dir.GetFiles();
+            for (int i = 0; i < dirs.Length; i++)
+            {
+                PrintDirToFileRecursive(filename, dirs[i], indent, (i == dirs.Length - 1) && files.Length == 0);
+            }
+            for (int i = 0; i < files.Length; i++)
+            {
+                File.AppendAllText(filename, $"{indent}{ (i == files.Length - 1 ? "\u2514\u2500" : "\u251C\u2500") }{files[i].Name}\n");
+            }
         }
     }
 }
