@@ -32,7 +32,7 @@ namespace Homework5
                         Task1();
                         break;
                     case 2:
-                        //Task2();
+                        Task2();
                         break;
                     case 3:
                         //Task3();
@@ -56,6 +56,19 @@ namespace Homework5
             Console.Write("Ввседите текст для сохранения в файл: ");
             string data = Console.ReadLine();
             File.WriteAllText(filename, data);
+            DirectoryInfo directoryInfo = new DirectoryInfo(filename);
+            Console.WriteLine($"Данные записаны в файл {directoryInfo.FullName}");
+        }
+
+        /// <summary>
+        /// Задача 2. При старте дописывает текущее время в файл «startup.txt»
+        /// </summary>
+        public static void Task2()
+        {
+            string filename = "startup.txt";
+            DateTime time = DateTime.Now;
+            string s = time.ToString("HH:mm:ss") + '\n';
+            File.AppendAllText(filename,s);
             DirectoryInfo directoryInfo = new DirectoryInfo(filename);
             Console.WriteLine($"Данные записаны в файл {directoryInfo.FullName}");
         }
